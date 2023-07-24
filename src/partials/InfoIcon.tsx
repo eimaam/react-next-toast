@@ -39,7 +39,7 @@ const InfoIcon = () => {
       />
     </g>
   </g>
-</svg>;
+</svg>
   );
 };
 
