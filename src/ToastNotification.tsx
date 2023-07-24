@@ -48,8 +48,9 @@ const ToastNotification: React.FC<ToastDetail> = ({
       position === "left"
         ? defaultPositionStyle.left
         : undefined,
-    width: "320px",
-    height: "max-content",
+    maxWidth: "100%",
+    minWidth: '320px',
+    maxHeight: "max-content",
     backgroundColor:
       backgroundColor ||
       (type === TOAST_TYPE.success
@@ -66,6 +67,9 @@ const ToastNotification: React.FC<ToastDetail> = ({
     display: "flex",
     gap: "1rem",
     padding: "0.5rem",
+  };
+
+  const messageStyle = {
     color:
       textColor ||
       (type === TOAST_TYPE.success
@@ -77,12 +81,20 @@ const ToastNotification: React.FC<ToastDetail> = ({
         : type === TOAST_TYPE.info
         ? "#FFF"
         : "#000"),
+    fontSize: "1rem",
+    maxHeight: "100px",
+    overflowX: "hidden",
+    overflowY: "visible",
+    textOverflow: "ellipsis",
+    fontWeight: 'bold'
   };
 
   return (
     <div style={notificationStyle}>
-      <IconComponent />
-      <span style={{ color: "black", fontSize: "1rem" }}>{message}</span>
+      <div>
+        <IconComponent />
+      </div>
+      <p style={messageStyle}>{message}</p>
     </div>
   );
 };
