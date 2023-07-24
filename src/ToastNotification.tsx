@@ -69,7 +69,7 @@ const ToastNotification: React.FC<ToastDetail> = ({
     padding: "0.5rem",
   };
 
-  const messageStyle = {
+  const messageStyle: React.CSSProperties = {
     color:
       textColor ||
       (type === TOAST_TYPE.success
