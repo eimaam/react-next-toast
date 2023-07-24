@@ -19,7 +19,6 @@ const ToastNotification: React.FC<ToastDetail> = ({
   type,
   position,
 }) => {
-  
   const IconComponent = typeToIconMap[type] || InfoIcon;
 
   const defaultPositionStyle: React.CSSProperties = {
@@ -79,7 +78,6 @@ const ToastNotification: React.FC<ToastDetail> = ({
         ? "#FFF"
         : "#000"),
   };
- 
 
   return (
     <div style={notificationStyle}>
@@ -90,6 +88,3 @@ const ToastNotification: React.FC<ToastDetail> = ({
 };
 
 export default ToastNotification;
-
-
-
