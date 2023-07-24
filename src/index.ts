@@ -1,1 +1,1 @@
-export { default as ErrorNotificationToast } from './ToastNotification';
+export { default as showToast } from './partials/showToast';
