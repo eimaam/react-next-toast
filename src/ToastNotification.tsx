@@ -49,7 +49,7 @@ const ToastNotification: React.FC<ToastDetail> = ({
         ? defaultPositionStyle.left
         : undefined,
     maxWidth: "100%",
-    minWidth: '320px',
+    minWidth: "320px",
     maxHeight: "max-content",
     backgroundColor:
       backgroundColor ||
@@ -70,23 +70,13 @@ const ToastNotification: React.FC<ToastDetail> = ({
   };
 
   const messageStyle: React.CSSProperties = {
-    color:
-      textColor ||
-      (type === TOAST_TYPE.success
-        ? "#000"
-        : type === TOAST_TYPE.error
-        ? "#FFF"
-        : type === TOAST_TYPE.warning
-        ? "#FFF"
-        : type === TOAST_TYPE.info
-        ? "#FFF"
-        : "#000"),
+    color: textColor || (type === TOAST_TYPE.success ? "#000" : "#FFF"),
     fontSize: "1rem",
     maxHeight: "100px",
     overflowX: "hidden",
     overflowY: "visible",
     textOverflow: "ellipsis",
-    fontWeight: 'bold'
+    fontWeight: "bold",
   };
 
   return (
