@@ -23,13 +23,13 @@ import { showToast } from 'react-next-toast';
 const MyComponent = () => {
 
 const handleClick = () => {
-    showToast.success('Log in successful)
+    showToast.success('Log in successful')
 }
 
 return (
     <div>
       <h1>Hello Dev</h1>
-      <button>Log in</button>
+      <button onClick={handleClick}>Log in</button>
     </div>
 );
 }
