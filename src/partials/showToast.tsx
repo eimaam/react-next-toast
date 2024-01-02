@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { DefaultMessage, ToastDetail, ToastType } from "./interfaces";
 import ToastNotification from "../ToastNotification";
 
@@ -37,17 +37,30 @@ const showToastComponent = (toastDetail: ToastDetail) => {
 
   const toastContainer = document.createElement("div");
 
+  const root = createRoot(toastContainer);
+
   // Render the ToastNotification component inside the container element
-  ReactDOM.render(<ToastNotification {...toastDetail} />, toastContainer);
+  root.render(<ToastNotification {...toastDetail} />);
 
-  // Append the container to the DOM
+  // Find and remove any existing toasts
+  const existingToasts = document.querySelectorAll("[data-toast-container]");
+  existingToasts.forEach((existingToast) => {
+    if (document.body.contains(existingToast)) {
+      document.body.removeChild(existingToast);
+    }
+  });
+
+  // Append the new toast container to the DOM
   document.body.appendChild(toastContainer);
+  toastContainer.setAttribute("data-toast-container", "true");
 
-
-  // Optionally, set a timeout to remove the toast notification after a certain time
+  // set a timeout to remove the toast notification after a certain time
   duration &&
     setTimeout(() => {
-      document.body.removeChild(toastContainer);
+      // Check if the toastContainer is still a child of document.body
+      if (document.body.contains(toastContainer)) {
+        document.body.removeChild(toastContainer);
+      }
     }, duration);
 };
 
