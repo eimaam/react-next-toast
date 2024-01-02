@@ -164,5 +164,4 @@ const Warning = () => {
   );
 };
 
-
-export const Icon  = { Error, Warning, Success, Info}
+export const Icon = { Error, Warning, Success, Info };
