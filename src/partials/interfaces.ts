@@ -13,16 +13,16 @@ export interface ToastDetail {
   duration?: number;
 }
 
-export enum TOAST_TYPE {
-  success = "success",
-  error = "error",
-  warning = "warning",
-  info = "info",
+export enum ToastType {
+  SUCCESS = "success",
+  ERROR = "error",
+  WARNING = "warning",
+  INFO = "info",
 }
 
-export enum DEFAULT_MESSAGE {
-  success = "Success",
-  error = "Error",
-  warning = "Warning",
-  info = "Info",
+export enum DefaultMessage {
+  SUCCESS = "Success",
+  ERROR = "Error",
+  WARNING = "Warning",
+  INFO = "Info",
 }

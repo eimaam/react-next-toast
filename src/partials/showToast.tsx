@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { DEFAULT_MESSAGE, ToastDetail } from "./interfaces";
+import { DefaultMessage, ToastDetail, ToastType } from "./interfaces";
 import ToastNotification from "../ToastNotification";
 
 const DEFAULT_DURATION = 5000;
@@ -8,26 +8,26 @@ const DEFAULT_DURATION = 5000;
 const showToast = {
   success: (message: string, duration?: number) =>
     showToastComponent({
-      type: "success",
-      message: message || DEFAULT_MESSAGE.success,
+      type: ToastType.SUCCESS,
+      message: message || DefaultMessage.SUCCESS,
       duration: duration || DEFAULT_DURATION,
     }),
   error: (message: string, duration?: number) =>
     showToastComponent({
-      type: "error",
-      message: message || DEFAULT_MESSAGE.error,
+      type: ToastType.ERROR,
+      message: message || DefaultMessage.ERROR,
       duration: duration || DEFAULT_DURATION,
     }),
   warning: (message: string, duration?: number) =>
     showToastComponent({
-      type: "warning",
-      message: message || DEFAULT_MESSAGE.warning,
+      type: ToastType.WARNING,
+      message: message || DefaultMessage.WARNING,
       duration: duration || DEFAULT_DURATION,
     }),
   info: (message: string, duration?: number) =>
     showToastComponent({
-      type: "info",
-      message: message || DEFAULT_MESSAGE.info,
+      type: ToastType.INFO,
+      message: message || DefaultMessage.INFO,
       duration: duration || DEFAULT_DURATION,
     }),
 };
@@ -42,6 +42,7 @@ const showToastComponent = (toastDetail: ToastDetail) => {
 
   // Append the container to the DOM
   document.body.appendChild(toastContainer);
+
 
   // Optionally, set a timeout to remove the toast notification after a certain time
   duration &&
