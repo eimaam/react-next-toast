@@ -19,8 +19,8 @@ const ToastNotification: React.FC<ToastDetail> = ({
   const IconComponent = typeToIconMap[type] || Icon.Info;
 
   const defaultPositionStyle: React.CSSProperties = {
-    top: "80px",
-    bottom: "80px",
+    top: "30px",
+    bottom: "30px",
     right: "10px",
     left: "10px",
   };
@@ -76,14 +76,19 @@ const ToastNotification: React.FC<ToastDetail> = ({
     overflowX: "hidden",
     overflowY: "visible",
     textOverflow: "ellipsis",
+    whiteSpace: "pre-line",
   };
 
   return (
-    <div style={notificationStyle}>
+    <div style={notificationStyle} data-toast-container>
       <div>
         <IconComponent />
       </div>
-      <p style={messageStyle}>{message}</p>
+      <p style={messageStyle} 
+      dangerouslySetInnerHTML={{
+        __html: message
+      }}
+      />
     </div>
   );
 };
