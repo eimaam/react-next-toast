@@ -54,8 +54,11 @@ const handleClick = () => {
 }
 ````
 
+### Contribution
+Project is OPEN SOURCE! Feel free to fork the repo and send a PR to contribute. I will be sure to merge if its a good piece. Thank you
+
 #### **NOTE:** _For more advanced customization, you can directly use the ToastNotification component and pass in the required props - duration, position, className._
 
 _Thank you for using `react-next-toast_! 🙏❤️ If you experience any issue, have any questions or sugestions for improvement, feel free to raise an issue here on GitHub or reach out to me. Your feedback is very vital! ☺:)
 
-_Cheers to toasting to simpler and delightful notes! _🥂 
+_Cheers to toasting to simpler and delightful notes! 🥂 _
