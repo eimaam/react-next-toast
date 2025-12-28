@@ -18,6 +18,7 @@ export enum ToastType {
   ERROR = "error",
   WARNING = "warning",
   INFO = "info",
+  LOADING = "loading"
 }
 
 export enum DefaultMessage {
