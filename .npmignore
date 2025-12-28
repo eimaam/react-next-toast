@@ -1,1 +1,10 @@
-.node_modules
+# Exclude development files
+src
+tsconfig.json
+node_modules
+.git
+.gitignore
+.vscode
+demo.html
+*.log
+.DS_Store
