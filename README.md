@@ -1,64 +1,126 @@
-# react-next-toast
-### 📦 Introducing react-next-toast 🍞
-Tired of dealing with complex notification packages or having to spend time building components just to render alerts or toast notificaitons in your React projects? Look no further! Here, I introduce `react-next-toast` 
+# react-next-toast v3.0 🍞
 
-### 🚀 Why Choose react-next-toast??
-- Easy to use: `react-next-toast` was built with ease in mind - say goodbye to complex toast declarations - with react-next-toast you have a toast via a single function call.
-- Customizable: With our Four (4) different types of Toast Notifications - <b>Success, Error, Warning and Info<b>, you get a fine-tuned and different UI display for each which directly passes message from the choice of colour and design. It also provides option to choose duration of toasts, colours and fonts.
-- Lightweight: Designed with performance in mind as well, the package is designed to lightweight in other to ensure it does not slow down your app's performance.
-- Fully-typed: `react-next-toast` comes with TypeScript support out of the box to provide type safety and seamless renderings.
+A premium, modern notification system for React applications. Inspired by the refined design language of **Linear**, **Vercel**, and **Raycast**.
 
-### 📝 How to Use:
-1. Install the package into your project
-   
-~~~
+[![npm version](https://img.shields.io/npm/v/react-next-toast.svg?style=flat-square)](https://www.npmjs.com/package/react-next-toast)
+[![license](https://img.shields.io/npm/l/react-next-toast.svg?style=flat-square)](https://github.com/eimaam/react-next-toast/blob/main/LICENSE)
+
+## ✨ Features
+
+- **Premium Aesthetics**: Glassmorphism surfaces with subtle blur, translucent borders, and refined animations.
+- **Intelligent Stacking**: Notifications stack elegantly with customizable gaps and responsive positioning.
+- **Semantic Variants**: Beautifully crafted Success, Error, Warning, Info, and Loading states with matching icons.
+- **Imperative & Declarative**: Use the standalone `toast` API or the `useToast` hook.
+- **Promise Support**: Handle async states with ease using `toast.promise`.
+- **Lightweight & Fully Typed**: Zero external styling dependencies, built with TypeScript.
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
 npm install react-next-toast
-~~~
+```
 
-2. Import the `showToast` & use in your Component:
+### Setup
+
+Add the `ToastProvider` to your app root to enable context-based features and global configuration react requires...
+
+```jsx
+import { ToastProvider } from 'react-next-toast';
+
+function App() {
+  return (
+    <ToastProvider position="bottom-right" theme="dark">
+      <Component {...pageProps} />
+    </ToastProvider>
+  );
+}
+```
+
+## 📖 Usage
+
+### Simple Usage
+
+```javascript
+import { toast } from 'react-next-toast';
+
+// Simple toast
+toast("Hello world!");
+
+// Variant toasts
+toast.success("Yo! Saved successfully");
+toast.error("Something went wrong");
+toast.warning("Check your settings...");
+toast.info("New update just dropped!!");
+toast.loading("Loading..."); [NEW]
+```
+
+### Advanced Usage
+
+```javascript
+toast.success("Saved successfully", {
+  description: "Your changes have been applied to all workspaces.",
+  duration: 4000,
+  action: {
+    label: "Undo",
+    onClick: () => console.log("Undo clicked"),
+  },
+});
+```
+
+### Async Promises
+
+```javascript
+const myPromise = fetchData();
+
+toast.promise(myPromise, {
+  loading: 'Fetching data...',
+  success: (data) => `Loaded ${data.name}!`,
+  error: 'Could not fetch data.',
+});
+```
+
+### Standalone API
+
+No context? No problem. The `toast` API works anywhere in your application, even outside of React components.
+
+```javascript
+import { toast } from 'react-next-toast';
+
+// this automatically injects a container if not found
+toast.success("Build complete!");
+```
+
+## 🎨 Global Configuration
+
+Configure the default behavior via the `ToastProvider` or `toast.configure`.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `position` | `ToastPosition` | `bottom-right` | Position on desktop. Mobile defaults to `top-center`. |
+| `theme` | `'light' \| 'dark'` | `dark` | Visual theme of the toasts. |
+| `maxVisible` | `number` | `5` | Maximum number of toasts visible at once. |
+| `gap` | `number` | `12` | Spacing between stacked toasts in pixels. |
+
+## 🛠 Backwards Compatibility:
+
+v3.0 preserves the legacy `showToast` API for a zero-effort upgrade path. Existing calls will automatically use the new premium design.
 
 ```javascript
 import { showToast } from 'react-next-toast';
 
-const MyComponent = () => {
-
-const handleClick = () => {
-    showToast.success('Log in successful')
-}
-
-return (
-    <div>
-      <h1>Hello Dev</h1>
-      <button onClick={handleClick}>Log in</button>
-    </div>
-);
-}
-export default MyComponent;
-
-````
-### Demo
-
-
-![react-next-toast-demo-gif](https://github.com/eimaam/react-next-toast/assets/43689084/6ef36df6-6683-4128-b5f9-0924d77e0193)
-
-##### CodeSandbox 
-[Code Sandbox Environment](https://codesandbox.io/p/sandbox/react-next-toast-demo-mtltvw?layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522cltvljqkh00063b6i2uff92xu%2522%252C%2522sizes%2522%253A%255B70%252C30%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522cltvljqkg00023b6i4g3mvfp1%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522cltvljqkg00033b6i26e2hm7e%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522cltvljqkg00053b6it67qtnlw%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B50%252C50%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522cltvljqkg00023b6i4g3mvfp1%2522%253A%257B%2522id%2522%253A%2522cltvljqkg00023b6i4g3mvfp1%2522%252C%2522tabs%2522%253A%255B%255D%257D%252C%2522cltvljqkg00053b6it67qtnlw%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522cltvljqkg00043b6il3o8r8ub%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522UNASSIGNED_PORT%2522%252C%2522port%2522%253A0%252C%2522path%2522%253A%2522%252F%2522%257D%255D%252C%2522id%2522%253A%2522cltvljqkg00053b6it67qtnlw%2522%252C%2522activeTabId%2522%253A%2522cltvljqkg00043b6il3o8r8ub%2522%257D%252C%2522cltvljqkg00033b6i26e2hm7e%2522%253A%257B%2522tabs%2522%253A%255B%255D%252C%2522id%2522%253A%2522cltvljqkg00033b6i26e2hm7e%2522%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Atrue%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D)
-
-### 💡 Additional Features
-You can customize the `duration` of the Toast Notification by passing time in `ms` as second parameter to the `showToast` function.
-The default is `5000` which is 5 seconds.
-
-````javascript
-const handleClick = () => {
-  showToast.error('incorrect login details', 4000)
-}
-````
+showToast.success('Log in successful');
+```
 
 ### Contribution
-Project is OPEN SOURCE! Feel free to fork the repo and send a PR to contribute. I will be sure to merge if its a good piece. Thank you
+Project is Open-Sourced! Wanna contribute? Feel free to fork the repo and send a PR. I will be sure to merge if its a good piece. Thank you!
 
-#### **NOTE:** _For more advanced customization, you can directly use the ToastNotification component and pass in the required props - duration, position, className._
+Thank you for using `react-next-toast`! 🙏❤️ If you experience any issue, have any questions or sugestions for improvement, feel free to raise an issue here on GitHub or reach out to me. Your feedback is very vital! ☺:)
 
-_Thank you for using `react-next-toast_! 🙏❤️ If you experience any issue, have any questions or sugestions for improvement, feel free to raise an issue here on GitHub or reach out to me. Your feedback is very vital! ☺:)
+Cheers to toasting to simpler and delightful notes! 🥂
 
-_Cheers to toasting to simpler and delightful notes! 🥂_
+
+## 📄 License
+
+MIT © [Imam Dahir Dan-Azumi](https://eimaam.dev)
