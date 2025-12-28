@@ -1,22 +1,24 @@
 {
   "name": "react-next-toast",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A premium, modern toast notification system for React applications",
   "homepage": "https://github.com/eimaam/react-next-toast",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "browser": "dist/index.global.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "default": "./dist/index.js"
     }
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsup src/index.ts --format cjs,esm,iife --dts --minify --clean --sourcemap --external react,react-dom",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts --external react,react-dom",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },
@@ -51,6 +53,7 @@
     "@types/react-dom": "^18.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsup": "^8.5.1",
     "typescript": "^5.3.3"
   }
 }
